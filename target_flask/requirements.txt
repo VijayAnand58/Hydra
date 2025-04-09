@@ -1,0 +1,4 @@
+Flask==3.1.0
+prometheus_client==0.21.1
+psutil
+docker
