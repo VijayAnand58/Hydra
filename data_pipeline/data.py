@@ -44,12 +44,9 @@ for i, t in enumerate(anomaly_times):
 def trigger_anomaly(count):
     print("Running pumba")
     try:
-        if count%2==0:
-            print("CPU kill")
-            subprocess.Popen(CMD__CPU_KILL,shell=True)
-        else:
-            print("Net kill")
-            subprocess.Popen(CMD_NET_KILL,shell=True)
+        print("Chaos starts")
+        subprocess.Popen(CMD__CPU_KILL,shell=True)
+
     except Exception as e:
         print("pumba failed")
         return 0

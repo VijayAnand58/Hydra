@@ -52,30 +52,6 @@ loaded_model = joblib.load('rf_model.pkl')
 #get action.py
 import action as ac
 
-# while True:
-#     try:
-#         data=fetch_metrics()
-#     # print(data)
-#     # # You can now use it to make predictions
-#         pred = loaded_model.predict(data)
-#         # prob = loaded_model.predict_proba(data)[0][1]
-#         # print(pred)
-#         if int(pred[0])==1:
-#             ac.run_duplicate_container()
-#             future = asyncio.run_coroutine_threadsafe(send_discord_message("Server acting anonomous"), bot.loop)
-#             try:
-#                 future.result(timeout=5)
-#                 print( "Message sent to Discord!")
-#             except Exception as e:
-#                 print("Failed to send message: {e}")
-
-#             time.sleep(300)
-        
-#         time.sleep(5)
-#     except KeyboardInterrupt:
-#         break
-
-# bot.run(token)
 sending_message="""Server acting anonomously,
 please attend to it, for now an additional container is springed up"""
 
