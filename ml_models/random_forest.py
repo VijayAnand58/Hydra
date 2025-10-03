@@ -7,11 +7,11 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 import joblib
 
-df=pd.read_csv(r"C:\Users\vijay\Documents\Programming\Hydra\normal_data.csv",parse_dates=["timestamp"])
+df=pd.read_csv(r"~/Downloads/Hydra/data_pipeline/Collected_data.csv",parse_dates=["timestamp"])
 
 #print(df) #verify pandas loading
 
-df.drop(columns=["timestamp","system_memory_usage_percent","flask_active_users","rate(request_processing_seconds_sum[30s]) / rate(request_processing_seconds_count[30s])","rate(network_packet_recieved[30s])/rate(network_packet_sent[30s])","flask_active_requests","process_virtual_memory_bytes","process_resident_memory_bytes","system_disk_usage_percent","process_cpu_seconds_total",],axis=1,inplace=True)
+df.drop(columns=["timestamp","flask_active_users","flask_active_requests","process_virtual_memory_bytes","process_resident_memory_bytes","system_disk_usage_percent","process_cpu_seconds_total",],axis=1,inplace=True)
 
 # print(df) #verify droped columns
 
@@ -21,7 +21,7 @@ df.drop(columns=["timestamp","system_memory_usage_percent","flask_active_users",
 x = df.drop(columns=["anomaly"])
 y = df["anomaly"]
 
-# print(x)
+# print(x.columns)
 # print(y)
 
 #scale the data 

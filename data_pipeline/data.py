@@ -11,7 +11,8 @@ PROMETHEUS_URL = "http://localhost:9090/api/v1/query"
 
 RUN_DURATION_MINUTES = 60 #this indicates the total time the program is goona run
 
-CMD__CPU_KILL="wsl docker run --rm -v /var/run/docker.sock:/var/run/docker.sock   gaiaadm/pumba stress --duration 59s"
+# CMD__CPU_KILL="wsl docker run --rm -v /var/run/docker.sock:/var/run/docker.sock   gaiaadm/pumba stress --duration 59s"
+CMD__CPU_KILL="sudo docker run --rm -v /var/run/docker.sock:/var/run/docker.sock   gaiaadm/pumba stress --duration 59s"
 #Stress cpu for 59 seconds, affect ram too
 CMD_NET_KILL="docker run -it --rm --net=host   -v /var/run/docker.sock:/var/run/docker.sock   gaiaadm/pumba netem --duration 59s   loss --percent 100 --correlation 100 re2:flask_app"
 #packet loss for 59 seconds
@@ -98,7 +99,7 @@ try:
 
         # Collect and save data
         data = fetch_metrics(anomaly=anomaly_active)
-        pd.DataFrame([data]).to_csv("normal_data.csv", mode="a", index=False, header=not pd.io.common.file_exists("normal_data.csv"))
+        pd.DataFrame([data]).to_csv("Collected_data.csv", mode="a", index=False, header=not os.path.exists("Collected_data.csv"))
 
         print(f"[{data['timestamp']}] Anomaly: {data['anomaly']}")
         time.sleep(5) # interval 5 seconds to again quey the data

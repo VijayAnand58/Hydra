@@ -20,7 +20,6 @@ PROMETHEUS_URL = "http://localhost:9090/api/v1/query"
 
 metrics = [
     "rate(request_processing_seconds_sum[30s]) / rate(request_processing_seconds_count[30s])",
-    "process_cpu_seconds_total",
     "system_cpu_usage_percent",
     "system_memory_usage_percent",
     "rate(network_packet_recieved[30s])/rate(network_packet_sent[30s])",
